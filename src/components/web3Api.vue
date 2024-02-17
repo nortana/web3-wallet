@@ -13,11 +13,13 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import { ref, inject } from "vue";
 import Web3, { ContractTransactionDataAndInputError } from "web3";
 import Tx from 'ethereumjs-tx';
+
+const wssGoerliTest = inject('$wssGoerliTest');//注入全局方法
  
-var web3 = new Web3(Web3.givenProvider || 'wss://goerli.infura.io/ws/v3/dc92288a8359d44v3548907ede39td9d7ba5861');
+var web3 = new Web3(Web3.givenProvider || wssGoerliTest);
 //var web311 = new web3(web3.givenProvider || "ws://localhost:8545");
 //console.log("Web3:", web3) 
 

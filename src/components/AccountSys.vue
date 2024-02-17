@@ -1,9 +1,11 @@
 
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject  } from "vue";
 import { generateMnemonic, mnemonicToSeed } from "bip39";
 import ethwllet, { hdkey, fromV3 } from "ethereumjs-wallet";
+
+const wssGoerliTest = inject('$wssGoerliTest');//注入全局方法
 
 import Web3 from "web3";
 
@@ -42,9 +44,7 @@ const genMnemonic = async () => {
   //1.web3js
 
   var web3 = new Web3(
-    Web3.givenProvider ||
-      "wss://goerli.infura.io/ws/v3/dc92288a8359d44v3548907ede39td9d7ba5861"
-  );
+    Web3.givenProvider || wssGoerliTest );
   //const keystore = web3.eth.accounts.encrypt('0x4c0883a69102937d6231471b5dbb6204fve5412961708c2792ae468d01a3f362318', "111");
   //console.log("keystore----->",keystore)
 
@@ -70,9 +70,9 @@ genMnemonic();
   <h1>助记词</h1>
   <p>{{ gm }}</p>
 
-  <p>账号地址:0x4f98c8f01c3e70f9dac82fe86d7d0bdc5389e32fa8d</p>
+  <p>账号地址:0x4f98c8f01c3243e70f9dac82fe86d7d0bdc5389e32fa8d</p>
   <p>
-    账号私钥:6ecbaa87da47eb92255bc0bb5ce1d134g0b7cf9w1390234ba0475b2c5bd82e52d94ec
+    账号私钥:6ecbaa87da47wu3423eb92255bc0bb5ce1d134g0b7cf9w1390234ba0475b2c5bd82e52d94ec
   </p>
 </template>
 <style>
